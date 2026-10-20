@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Meu perfil | Embaré Kraft{% endblock %}
+
+{% block content %}
+<section class="profile-section section">
+    <div class="container">
+
+        <div class="profile-heading">
+            <span class="eyebrow">ÁREA DO CLIENTE</span>
+
+            <h1>
+                Olá, <em>{{ account_user.username }}</em>.
+            </h1>
+
+            <p>
+                Estas são as informações associadas à sua conta Embaré Kraft.
+            </p>
+        </div>
+
+        <div class="row g-4 mt-2">
+
+            <div class="col-lg-4">
+                <aside class="profile-card profile-card-summary h-100">
+
+                    <div class="profile-avatar">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <h2>{{ account_user.username }}</h2>
+
+                    <p>
+                        {{ account_user.email|default:"E-mail não informado" }}
+                    </p>
+
+                    <span class="account-status">
+                        <i class="bi bi-check-circle-fill me-1"></i>
+                        Conta autenticada
+                    </span>
+
+                </aside>
+            </div>
+
+            <div class="col-lg-8">
+                <section class="profile-card h-100">
+
+                    <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-4">
+                        <div>
+                            <span class="eyebrow">SEUS DADOS</span>
+                            <h2 class="profile-card-title">Informações da conta</h2>
+                        </div>
+
+                        <a
+                            href="https://wa.me/5521983876085"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-brand-outline"
+                        >
+                            Falar com a equipe
+                        </a>
+                    </div>
+
+                    <div class="profile-detail">
+                        <span>Nome de usuário</span>
+                        <strong>{{ account_user.username }}</strong>
+                    </div>
+
+                    <div class="profile-detail">
+                        <span>E-mail</span>
+                        <strong>
+                            {{ account_user.email|default:"Não informado" }}
+                        </strong>
+                    </div>
+
+                    <div class="profile-detail">
+                        <span>Data de cadastro</span>
+                        <strong>
+                            {{ account_user.date_joined|date:"d/m/Y" }}
+                        </strong>
+                    </div>
+
+                    <div class="profile-note">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Para solicitar um orçamento, tirar dúvidas ou falar
+                        sobre seu pedido, entre em contato com nossa equipe.
+                    </div>
+
+                    <a
+                        href="https://wa.me/5521983876085"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-brand"
+                    >
+                        <i class="bi bi-whatsapp me-2"></i>
+                        Entrar em contato
+                    </a>
+
+                </section>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

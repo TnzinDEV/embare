@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}Criar conta | Embaré Kraft{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="container">
+
+        <div class="auth-shell auth-shell-register row g-0 mx-auto">
+
+            <div class="col-lg-5 auth-aside">
+                <div class="auth-aside-inner">
+
+                    <img
+                        class="auth-logo-image"
+                        src="https://embarekraft.com.br/assets/logo.png"
+                        alt="Embaré Kraft"
+                        loading="lazy"
+                    >
+
+                    <span class="eyebrow">CONTA EMBARÉ KRAFT</span>
+
+                    <h1>
+                        Vamos começar
+                        <em>por aqui.</em>
+                    </h1>
+
+                    <p>
+                        Crie seu acesso para manter suas informações
+                        organizadas e facilitar seu relacionamento com
+                        a nossa equipe.
+                    </p>
+
+                    <img
+                        class="auth-aside-photo"
+                        src="https://embarekraft.com.br/assets/portfolio-tulipas.jpg"
+                        alt="Sacola kraft personalizada"
+                        loading="lazy"
+                    >
+
+                </div>
+            </div>
+
+            <div class="col-lg-7 auth-main">
+                <div class="auth-form-wrap">
+
+                    <span class="eyebrow">CADASTRO</span>
+
+                    <h2>Crie sua conta</h2>
+
+                    <p class="auth-intro">
+                        Preencha os campos para cadastrar seu acesso.
+                    </p>
+
+                    <form
+                        method="post"
+                        action="{% url 'cadastro' %}"
+                        class="auth-form"
+                    >
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger auth-alert" role="alert">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label
+                                for="{{ form.username.id_for_label }}"
+                                class="form-label"
+                            >
+                                {{ form.username.label }}
+                            </label>
+
+                            {{ form.username }}
+
+                            {% for error in form.username.errors %}
+                                <div class="field-error">{{ error }}</div>
+                            {% endfor %}
+
+                            {% if form.username.help_text %}
+                                <div class="form-text">
+                                    {{ form.username.help_text|safe }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label
+                                for="{{ form.email.id_for_label }}"
+                                class="form-label"
+                            >
+                                {{ form.email.label }}
+                            </label>
+
+                            {{ form.email }}
+
+                            {% for error in form.email.errors %}
+                                <div class="field-error">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label
+                                for="{{ form.password1.id_for_label }}"
+                                class="form-label"
+                            >
+                                {{ form.password1.label }}
+                            </label>
+
+                            {{ form.password1 }}
+
+                            {% for error in form.password1.errors %}
+                                <div class="field-error">{{ error }}</div>
+                            {% endfor %}
+
+                            {% if form.password1.help_text %}
+                                <div class="form-text">
+                                    {{ form.password1.help_text|safe }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-4">
+                            <label
+                                for="{{ form.password2.id_for_label }}"
+                                class="form-label"
+                            >
+                                {{ form.password2.label }}
+                            </label>
+
+                            {{ form.password2 }}
+
+                            {% for error in form.password2.errors %}
+                                <div class="field-error">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-brand btn-lg w-100"
+                        >
+                            Criar minha conta
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </button>
+                    </form>
+
+                    <div class="auth-switch">
+                        Já tem uma conta?
+                        <a href="{% url 'login' %}">Entrar</a>
+                    </div>
+
+                    <a href="{% url 'home' %}" class="auth-back">
+                        <i class="bi bi-arrow-left me-2"></i>
+                        Voltar para o site
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
