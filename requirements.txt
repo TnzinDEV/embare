@@ -1,8 +1,5 @@
-asgiref==3.12.1
-defusedxml==0.7.1
-Django==6.1.1
-fonttools==4.63.0
-fpdf2==2.8.7
-pillow==12.3.0
+asgiref==3.13.0
+Django==6.1.2
+gunicorn==26.2.0
 sqlparse==0.6.0
-tzdata==2026.4
+tzdata==2026.5
